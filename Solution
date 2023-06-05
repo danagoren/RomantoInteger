@@ -1,0 +1,35 @@
+public class Solution {
+    public int RomanToInt(string s) {
+        int i = 0;
+        int n = s.Length;
+        int count = 0;
+        while (i<n){
+            if (i+1<n){
+                if (s[i] == 'I' && (s[i+1] == 'V'||s[i+1] == 'X')){
+                    count -= 1;
+                    i++;
+                    continue;
+                }
+                if (s[i] == 'X' && (s[i+1] == 'L' || s[i+1] == 'C')){
+                    count -= 10;
+                    i++;
+                    continue;
+                }
+                if (s[i] == 'C' && (s[i+1] == 'D' || s[i+1] == 'M')){
+                    count -= 100;
+                    i++;
+                    continue;
+                }
+            }
+            if (s[i]=='I'){ count += 1; i++; continue;}
+            if (s[i]=='V'){ count += 5; i++; continue;}
+            if (s[i]=='X'){ count += 10; i++; continue;}
+            if (s[i]=='L'){ count += 50; i++; continue;}
+            if (s[i]=='C'){ count += 100; i++; continue;}
+            if (s[i]=='D'){ count += 500; i++; continue;}
+            if (s[i]=='M'){ count += 1000; i++; continue;}
+            i++;
+        }
+        return count;
+    }
+}
